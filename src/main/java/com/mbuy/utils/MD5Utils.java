@@ -1,4 +1,4 @@
-package com.mbuy.util;
+package com.mbuy.utils;
 
 import java.security.MessageDigest;
 
