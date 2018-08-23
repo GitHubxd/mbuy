@@ -1,4 +1,4 @@
-package com.mbuy.resouce.user;
+package com.mbuy.resource.user;
 
 import com.mbuy.model.UserVo;
 
