@@ -1,5 +1,7 @@
 package com.mbuy.resource.user;
 
+import java.util.List;
+
 import com.mbuy.model.UserVo;
 
 /**
@@ -10,4 +12,13 @@ import com.mbuy.model.UserVo;
  */
 public interface IUserResouce {
 	void addUser(UserVo user);
+	
+	/**
+	 * 查询用户
+	 * 
+	 * @param user
+	 * @param req
+	 * @return
+	 */
+	List<UserVo> getUsers(UserVo user);
 }
