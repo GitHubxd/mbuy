@@ -14,11 +14,22 @@
     insert into mbuy_user (login_account, user_name, password, phone, dept_id,level_id)
     values (#{loginAccount,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, #{deptId,jdbcType=INTEGER}, 
-      #{levelId,jdbcType=INTEGER})
+      #{levelId,jdbcType=INTEGER}
   </insert>
   
   <select id="getUsers" parameterType="com.mbuy.model.UserVo" resultMap="BaseResultMap">
   	select id, login_account, user_name, phone, dept_id, level_id
   	from mbuy_user
   </select>
+  
+  <update id="update" parameterType="com.mbuy.entitys.MbuyUser">
+  	update id login_account, user_name, phone, dept_id, level_id from mbuy_user
+  	
+  	udpate mbuy_user set user_bame where id = 12
+  </update>
+  
+  <delete id="delete" parameterType="com.mbuy.entitys.MbuyUser"> 
+  	delete id from mbuy_user
+  	delete from mbuy_user where id = #{}
+  </delete>
 </mapper>

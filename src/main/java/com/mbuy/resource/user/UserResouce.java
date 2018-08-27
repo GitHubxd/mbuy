@@ -23,7 +23,20 @@ public class UserResouce implements IUserResouce {
 	public void addUser(@RequestBody UserVo user) {
 		userService.add(user);
 	}
-
+	
+	@Override
+	public void updateUser(@RequestBody UserVo user) {
+		userService.update(user);
+	}
+	@Override
+	public void delateUser(@RequestBody UserVo user) {
+		userService.delate(user);
+	}
+	@Override
+	public void selectUser(@RequestBody UserVo user) {
+		userService.select(user);
+	}
+	
 	@RequestMapping(value = "/get", method = RequestMethod.POST)
 	@Override
 	public List<UserVo> getUsers(@RequestBody UserVo user) {
@@ -31,4 +44,5 @@ public class UserResouce implements IUserResouce {
 		return list;
 
 	}
+	
 }

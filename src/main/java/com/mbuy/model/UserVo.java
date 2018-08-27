@@ -8,5 +8,7 @@ public class UserVo extends MbuyUser {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private Integer startNum;
 
 }

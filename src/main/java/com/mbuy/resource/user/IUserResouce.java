@@ -12,6 +12,9 @@ import com.mbuy.model.UserVo;
  */
 public interface IUserResouce {
 	void addUser(UserVo user);
+	void updateUser(UserVo user);
+	void delateUser(UserVo user);
+	void selectUser(UserVo user);
 	
 	/**
 	 * 查询用户

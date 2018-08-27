@@ -10,6 +10,9 @@ import com.mbuy.model.UserVo;
 @Mapper
 public interface MbuyUserMapper {
 	int insert(MbuyUser record);
-
+	int update(MbuyUser record);
+	int select(MbuyUser record);
+	int delate(MbuyUser record);
+	
 	List<UserVo> getUsers(UserVo userVo);
 }
