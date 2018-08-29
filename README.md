@@ -1,6 +1,6 @@
 # mbuy
 # 项目结构描述
-#src.main 
+# src.main 
 #    |
 #    com.mbuy
 #    |    |--------entitys    数据库实体bean
