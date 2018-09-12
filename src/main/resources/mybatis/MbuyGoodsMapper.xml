@@ -3,6 +3,7 @@
 <mapper namespace="com.mbuy.mapper.MbuyGoodsMapper" >
   <resultMap id="BaseResultMap" type="com.mbuy.entitys.MbuyGoods" >
     <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="goods_name" property="goodsName" jdbcType="VARCHAR"/>
     <result column="goods_price" property="goodsPrice" jdbcType="DECIMAL" />
     <result column="level_price" property="levelPrice" jdbcType="DECIMAL" />
     <result column="spec" property="spec" jdbcType="VARCHAR" />
@@ -16,6 +17,11 @@
     <include refid="Base_Column_List" />
     from mbuy_goods
     where id = #{id,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+  	select 
+    <include refid="Base_Column_List" />
+    from mbuy_goods
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from mbuy_goods
@@ -74,14 +80,6 @@
         goods_image = #{goodsImage,jdbcType=VARCHAR},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mbuy.entitys.MbuyGoods" >
-    update mbuy_goods
-    set goods_price = #{goodsPrice,jdbcType=DECIMAL},
-      level_price = #{levelPrice,jdbcType=DECIMAL},
-      spec = #{spec,jdbcType=VARCHAR},
-      goods_image = #{goodsImage,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

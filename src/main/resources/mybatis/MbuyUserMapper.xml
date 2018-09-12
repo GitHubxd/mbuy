@@ -24,12 +24,9 @@
   
   <update id="update" parameterType="com.mbuy.entitys.MbuyUser">
   	update id login_account, user_name, phone, dept_id, level_id from mbuy_user
-  	
-  	udpate mbuy_user set user_bame where id = 12
   </update>
   
   <delete id="delete" parameterType="com.mbuy.entitys.MbuyUser"> 
   	delete id from mbuy_user
-  	delete from mbuy_user where id = #{}
   </delete>
 </mapper>

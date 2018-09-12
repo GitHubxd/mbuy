@@ -6,6 +6,8 @@ import java.math.BigDecimal;
 public class MbuyGoods implements Serializable {
     private Integer id;
 
+	private String goodsName;
+
     private BigDecimal goodsPrice;
 
     private BigDecimal levelPrice;
@@ -24,7 +26,15 @@ public class MbuyGoods implements Serializable {
         this.id = id;
     }
 
-    public BigDecimal getGoodsPrice() {
+	public String getGoodsName() {
+		return goodsName;
+	}
+
+	public void setGoodsName(String goodsName) {
+		this.goodsName = goodsName;
+	}
+
+	public BigDecimal getGoodsPrice() {
         return goodsPrice;
     }
 
