@@ -14,6 +14,11 @@ public class UserService {
 	@Autowired
 	private MbuyUserMapper userMapper;
 
+	/**
+	 * 增加用户
+	 * 
+	 * @param user
+	 */
 	public void add(UserVo user) {
 		userMapper.insert(user);
 	}
