@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.mbuy.model.UserVo;
 import com.mbuy.service.user.UserService;
+import com.mbuy.utils.CommonResponse;
 
 @RestController
 @RequestMapping("/mbuy/user")
@@ -37,12 +38,13 @@ public class UserResouce implements IUserResouce {
 		userService.select(user);
 	}
 	
-	@RequestMapping(value = "/get", method = RequestMethod.POST)
+	@RequestMapping(value = "/getAllUser", method = RequestMethod.POST)
 	@Override
-	public List<UserVo> getUsers(@RequestBody UserVo user) {
+	public CommonResponse getUsers(@RequestBody UserVo user) {
 		List<UserVo> list = userService.getUsers(user);
-		return list;
-
+		CommonResponse commonResponse = CommonResponse.getInstance();
+		commonResponse.setResult(list);
+		return commonResponse;
 	}
 	
 }

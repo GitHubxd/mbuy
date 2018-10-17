@@ -1,8 +1,7 @@
 package com.mbuy.resource.user;
 
-import java.util.List;
-
 import com.mbuy.model.UserVo;
+import com.mbuy.utils.CommonResponse;
 
 /**
  * 用户相关
@@ -23,5 +22,5 @@ public interface IUserResouce {
 	 * @param req
 	 * @return
 	 */
-	List<UserVo> getUsers(UserVo user);
+	CommonResponse getUsers(UserVo user);
 }
