@@ -35,7 +35,7 @@ public class CorsFilter implements Filter {
 
 		res.setHeader("Access-Control-Allow-Origin", "*");
 		res.setHeader("Access-Control-Allow-Methods", "POST, GET, OPTIONS, DELETE");
-		res.setHeader("Access-Control-Allow-Headers", "x-requested-with");
+		res.setHeader("Access-Control-Allow-Headers", "Content-Type,x-requested-with");
 
 		chain.doFilter(req, res);
 	}
