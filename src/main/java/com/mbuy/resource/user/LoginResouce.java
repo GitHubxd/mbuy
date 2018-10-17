@@ -20,7 +20,6 @@ public class LoginResouce implements ILoginResouce {
 	@Override
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public CommonResponse login(@RequestBody UserVo userVo) {
-		System.out.println("--------------------");
 		return loginService.loingService(userVo);
 	}
 
