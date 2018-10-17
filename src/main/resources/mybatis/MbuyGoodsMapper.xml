@@ -10,7 +10,7 @@
     <result column="goods_image" property="goodsImage" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Base_Column_List" >
-    id, goods_price, level_price, spec, goods_image
+    id, goods_name, goods_price, level_price, spec, goods_image
   </sql>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
