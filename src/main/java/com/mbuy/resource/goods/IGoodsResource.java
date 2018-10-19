@@ -1,5 +1,6 @@
 package com.mbuy.resource.goods;
 
+import com.mbuy.model.GoodsVo;
 import com.mbuy.utils.CommonResponse;
 
 /**
@@ -11,4 +12,13 @@ import com.mbuy.utils.CommonResponse;
 public interface IGoodsResource {
 
 	CommonResponse getAllGoods();
+
+	/**
+	 * 增加商品
+	 * 
+	 * @param goodsVo
+	 * @return
+	 */
+	CommonResponse addGoods(GoodsVo goodsVo);
 }
+

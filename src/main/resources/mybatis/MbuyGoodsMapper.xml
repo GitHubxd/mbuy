@@ -33,6 +33,9 @@
       <if test="id != null" >
         id,
       </if>
+      <if test="goodsName != null" >
+        goods_name,
+      </if>
       <if test="goodsPrice != null" >
         goods_price,
       </if>
@@ -49,6 +52,9 @@
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null" >
+        #{goodsName,jdbcType=VARCHAR},
       </if>
       <if test="goodsPrice != null" >
         #{goodsPrice,jdbcType=DECIMAL},
