@@ -21,8 +21,8 @@ public class UserResouce implements IUserResouce {
 
 	@RequestMapping(value = "/add", method = RequestMethod.POST)
 	@Override
-	public void addUser(@RequestBody UserVo user) {
-		userService.add(user);
+	public CommonResponse addUser(@RequestBody UserVo user) {
+		return userService.add(user);
 	}
 	
 	@Override

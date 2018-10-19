@@ -6,4 +6,6 @@ public class ErrorCode {
 
 	public static Integer LOGIN_ERROR_10010 = 10010;
 
+	public static Integer ADD_ERROR_10020 = 10020;
+
 }

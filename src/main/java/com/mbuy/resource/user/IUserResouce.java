@@ -10,7 +10,14 @@ import com.mbuy.utils.CommonResponse;
  *
  */
 public interface IUserResouce {
-	void addUser(UserVo user);
+	/**
+	 * 新增加用户
+	 * 
+	 * @param user
+	 * @return
+	 */
+	CommonResponse addUser(UserVo user);
+
 	void updateUser(UserVo user);
 	void delateUser(UserVo user);
 	void selectUser(UserVo user);

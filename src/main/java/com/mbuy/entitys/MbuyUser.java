@@ -11,6 +11,8 @@ public class MbuyUser implements Serializable {
 
     private String password;
 
+	private String sex;
+
     private String phone;
 
     private Integer deptId;
@@ -51,7 +53,15 @@ public class MbuyUser implements Serializable {
         this.password = password == null ? null : password.trim();
     }
 
-    public String getPhone() {
+	public String getSex() {
+		return sex;
+	}
+
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+
+	public String getPhone() {
         return phone;
     }
 
