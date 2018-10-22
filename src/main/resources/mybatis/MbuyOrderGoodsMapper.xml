@@ -12,78 +12,17 @@
     <result column="create_date" property="createDate" jdbcType="INTEGER" />
     <result column="edit_date" property="editDate" jdbcType="INTEGER" />
   </resultMap>
-  <sql id="Example_Where_Clause" >
-    <where >
-      <foreach collection="oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
-  <sql id="Update_By_Example_Where_Clause" >
-    <where >
-      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
-        <if test="criteria.valid" >
-          <trim prefix="(" suffix=")" prefixOverrides="and" >
-            <foreach collection="criteria.criteria" item="criterion" >
-              <choose >
-                <when test="criterion.noValue" >
-                  and ${criterion.condition}
-                </when>
-                <when test="criterion.singleValue" >
-                  and ${criterion.condition} #{criterion.value}
-                </when>
-                <when test="criterion.betweenValue" >
-                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
-                </when>
-                <when test="criterion.listValue" >
-                  and ${criterion.condition}
-                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
-                    #{listItem}
-                  </foreach>
-                </when>
-              </choose>
-            </foreach>
-          </trim>
-        </if>
-      </foreach>
-    </where>
-  </sql>
   <sql id="Base_Column_List" >
     id, order_id, goods_id, goods_name, curr_price, goods_num, total_price, create_date, 
     edit_date
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mbuy.entitys.MbuyOrderGoodsExample" >
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.mbuy.entitys.MbuyOrderGoodsExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from mbuy_order_goods
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
     <if test="orderByClause != null" >
       order by ${orderByClause}
     </if>
@@ -91,32 +30,10 @@
       limit ${limitStart} , ${pageSize}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select 
-    <include refid="Base_Column_List" />
-    from mbuy_order_goods
-    where id = #{id,jdbcType=INTEGER}
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from mbuy_order_goods
     where id = #{id,jdbcType=INTEGER}
   </delete>
-  <delete id="deleteByExample" parameterType="com.mbuy.entitys.MbuyOrderGoodsExample" >
-    delete from mbuy_order_goods
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </delete>
-  <insert id="insert" parameterType="com.mbuy.entitys.MbuyOrderGoods" >
-    insert into mbuy_order_goods (id, order_id, goods_id, 
-      goods_name, curr_price, goods_num, 
-      total_price, create_date, edit_date
-      )
-    values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, 
-      #{goodsName,jdbcType=VARCHAR}, #{currPrice,jdbcType=DECIMAL}, #{goodsNum,jdbcType=INTEGER}, 
-      #{totalPrice,jdbcType=DECIMAL}, #{createDate,jdbcType=INTEGER}, #{editDate,jdbcType=INTEGER}
-      )
-  </insert>
   <insert id="insertSelective" parameterType="com.mbuy.entitys.MbuyOrderGoods" >
     insert into mbuy_order_goods
     <trim prefix="(" suffix=")" suffixOverrides="," >
@@ -178,62 +95,6 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.mbuy.entitys.MbuyOrderGoodsExample" resultType="java.lang.Integer" >
-    select count(*) from mbuy_order_goods
-    <if test="_parameter != null" >
-      <include refid="Example_Where_Clause" />
-    </if>
-  </select>
-  <update id="updateByExampleSelective" parameterType="map" >
-    update mbuy_order_goods
-    <set >
-      <if test="record.id != null" >
-        id = #{record.id,jdbcType=INTEGER},
-      </if>
-      <if test="record.orderId != null" >
-        order_id = #{record.orderId,jdbcType=INTEGER},
-      </if>
-      <if test="record.goodsId != null" >
-        goods_id = #{record.goodsId,jdbcType=INTEGER},
-      </if>
-      <if test="record.goodsName != null" >
-        goods_name = #{record.goodsName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.currPrice != null" >
-        curr_price = #{record.currPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="record.goodsNum != null" >
-        goods_num = #{record.goodsNum,jdbcType=INTEGER},
-      </if>
-      <if test="record.totalPrice != null" >
-        total_price = #{record.totalPrice,jdbcType=DECIMAL},
-      </if>
-      <if test="record.createDate != null" >
-        create_date = #{record.createDate,jdbcType=INTEGER},
-      </if>
-      <if test="record.editDate != null" >
-        edit_date = #{record.editDate,jdbcType=INTEGER},
-      </if>
-    </set>
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExample" parameterType="map" >
-    update mbuy_order_goods
-    set id = #{record.id,jdbcType=INTEGER},
-      order_id = #{record.orderId,jdbcType=INTEGER},
-      goods_id = #{record.goodsId,jdbcType=INTEGER},
-      goods_name = #{record.goodsName,jdbcType=VARCHAR},
-      curr_price = #{record.currPrice,jdbcType=DECIMAL},
-      goods_num = #{record.goodsNum,jdbcType=INTEGER},
-      total_price = #{record.totalPrice,jdbcType=DECIMAL},
-      create_date = #{record.createDate,jdbcType=INTEGER},
-      edit_date = #{record.editDate,jdbcType=INTEGER}
-    <if test="_parameter != null" >
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.mbuy.entitys.MbuyOrderGoods" >
     update mbuy_order_goods
     <set >
@@ -262,18 +123,6 @@
         edit_date = #{editDate,jdbcType=INTEGER},
       </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mbuy.entitys.MbuyOrderGoods" >
-    update mbuy_order_goods
-    set order_id = #{orderId,jdbcType=INTEGER},
-      goods_id = #{goodsId,jdbcType=INTEGER},
-      goods_name = #{goodsName,jdbcType=VARCHAR},
-      curr_price = #{currPrice,jdbcType=DECIMAL},
-      goods_num = #{goodsNum,jdbcType=INTEGER},
-      total_price = #{totalPrice,jdbcType=DECIMAL},
-      create_date = #{createDate,jdbcType=INTEGER},
-      edit_date = #{editDate,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

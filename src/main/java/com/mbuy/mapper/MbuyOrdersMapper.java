@@ -1,5 +1,7 @@
 package com.mbuy.mapper;
 
+import java.util.List;
+
 import org.apache.ibatis.annotations.Mapper;
 
 import com.mbuy.entitys.MbuyOrders;
@@ -9,13 +11,9 @@ public interface MbuyOrdersMapper {
 
     int deleteByPrimaryKey(Integer id);
 
-    int insert(MbuyOrders record);
-
     int insertSelective(MbuyOrders record);
 
-    MbuyOrders selectByPrimaryKey(Integer id);
+	List<MbuyOrders> selectAll();
 
     int updateByPrimaryKeySelective(MbuyOrders record);
-
-    int updateByPrimaryKey(MbuyOrders record);
 }
