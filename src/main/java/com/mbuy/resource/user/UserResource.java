@@ -14,7 +14,7 @@ import com.mbuy.utils.CommonResponse;
 
 @RestController
 @RequestMapping("/mbuy/user")
-public class UserResouce implements IUserResouce {
+public class UserResource implements IUserResource {
 
 	@Autowired
 	private UserService userService;

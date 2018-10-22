@@ -9,7 +9,7 @@ import com.mbuy.utils.CommonResponse;
  * @author xd
  *
  */
-public interface IUserResouce {
+public interface IUserResource {
 	/**
 	 * 新增加用户
 	 * 

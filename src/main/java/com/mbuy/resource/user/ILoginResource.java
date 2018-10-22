@@ -9,7 +9,7 @@ import com.mbuy.utils.CommonResponse;
  * @author 37523
  *
  */
-public interface ILoginResouce {
+public interface ILoginResource {
 
 	/**
 	 * 登录

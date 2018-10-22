@@ -12,7 +12,7 @@ import com.mbuy.utils.CommonResponse;
 
 @RestController
 @RequestMapping("/mbuy/user")
-public class LoginResouce implements ILoginResouce {
+public class LoginResource implements ILoginResource {
 
 	@Autowired
 	LoginService loginService;
