@@ -18,20 +18,6 @@
     id, order_sn, user_id, shipping_type, install_price, discount_amount, goods_price, 
     total_price, install_date, create_date, edit_date
   </sql>
-  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.mbuy.entitys.MbuyOrdersExample" >
-    select
-    <if test="distinct" >
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    from mbuy_orders
-    <if test="orderByClause != null" >
-      order by ${orderByClause}
-    </if>
-    <if test="limitStart >= 0" >
-      limit ${limitStart} , ${pageSize}
-    </if>
-  </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from mbuy_orders
     where id = #{id,jdbcType=INTEGER}
