@@ -1,0 +1,341 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.mbuy.mapper.AliOrderMapper" >
+  <resultMap id="BaseResultMap" type="com.mbuy.entitys.AliOrder" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="ali_wangwang" property="aliWangwang" jdbcType="VARCHAR" />
+    <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
+    <result column="ali_phone" property="aliPhone" jdbcType="VARCHAR" />
+    <result column="ali_address" property="aliAddress" jdbcType="VARCHAR" />
+    <result column="ali_remark" property="aliRemark" jdbcType="VARCHAR" />
+    <result column="ali_product" property="aliProduct" jdbcType="VARCHAR" />
+    <result column="ali_money" property="aliMoney" jdbcType="DECIMAL" />
+    <result column="ali_imgs" property="aliImgs" jdbcType="VARCHAR" />
+    <result column="design" property="design" jdbcType="VARCHAR" />
+    <result column="pack" property="pack" jdbcType="VARCHAR" />
+    <result column="add_time" property="addTime" jdbcType="INTEGER" />
+    <result column="update_time" property="updateTime" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, ali_wangwang, goods_num, ali_phone, ali_address, ali_remark, ali_product, ali_money, 
+    ali_imgs, design, pack, add_time, update_time
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mbuy.entitys.AliOrderExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ali_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart >= 0" >
+      limit ${limitStart} , ${pageSize}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from ali_order
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from ali_order
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.mbuy.entitys.AliOrderExample" >
+    delete from ali_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.mbuy.entitys.AliOrder" >
+    insert into ali_order (id, ali_wangwang, goods_num, 
+      ali_phone, ali_address, ali_remark, 
+      ali_product, ali_money, ali_imgs, 
+      design, pack, add_time, 
+      update_time)
+    values (#{id,jdbcType=INTEGER}, #{aliWangwang,jdbcType=VARCHAR}, #{goodsNum,jdbcType=INTEGER}, 
+      #{aliPhone,jdbcType=VARCHAR}, #{aliAddress,jdbcType=VARCHAR}, #{aliRemark,jdbcType=VARCHAR}, 
+      #{aliProduct,jdbcType=VARCHAR}, #{aliMoney,jdbcType=DECIMAL}, #{aliImgs,jdbcType=VARCHAR}, 
+      #{design,jdbcType=VARCHAR}, #{pack,jdbcType=VARCHAR}, #{addTime,jdbcType=INTEGER}, 
+      #{updateTime,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mbuy.entitys.AliOrder" >
+    insert into ali_order
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="aliWangwang != null" >
+        ali_wangwang,
+      </if>
+      <if test="goodsNum != null" >
+        goods_num,
+      </if>
+      <if test="aliPhone != null" >
+        ali_phone,
+      </if>
+      <if test="aliAddress != null" >
+        ali_address,
+      </if>
+      <if test="aliRemark != null" >
+        ali_remark,
+      </if>
+      <if test="aliProduct != null" >
+        ali_product,
+      </if>
+      <if test="aliMoney != null" >
+        ali_money,
+      </if>
+      <if test="aliImgs != null" >
+        ali_imgs,
+      </if>
+      <if test="design != null" >
+        design,
+      </if>
+      <if test="pack != null" >
+        pack,
+      </if>
+      <if test="addTime != null" >
+        add_time,
+      </if>
+      <if test="updateTime != null" >
+        update_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="aliWangwang != null" >
+        #{aliWangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNum != null" >
+        #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="aliPhone != null" >
+        #{aliPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="aliAddress != null" >
+        #{aliAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="aliRemark != null" >
+        #{aliRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="aliProduct != null" >
+        #{aliProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="aliMoney != null" >
+        #{aliMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="aliImgs != null" >
+        #{aliImgs,jdbcType=VARCHAR},
+      </if>
+      <if test="design != null" >
+        #{design,jdbcType=VARCHAR},
+      </if>
+      <if test="pack != null" >
+        #{pack,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        #{updateTime,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.mbuy.entitys.AliOrderExample" resultType="java.lang.Integer" >
+    select count(*) from ali_order
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ali_order
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.aliWangwang != null" >
+        ali_wangwang = #{record.aliWangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsNum != null" >
+        goods_num = #{record.goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.aliPhone != null" >
+        ali_phone = #{record.aliPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aliAddress != null" >
+        ali_address = #{record.aliAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aliRemark != null" >
+        ali_remark = #{record.aliRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aliProduct != null" >
+        ali_product = #{record.aliProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="record.aliMoney != null" >
+        ali_money = #{record.aliMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="record.aliImgs != null" >
+        ali_imgs = #{record.aliImgs,jdbcType=VARCHAR},
+      </if>
+      <if test="record.design != null" >
+        design = #{record.design,jdbcType=VARCHAR},
+      </if>
+      <if test="record.pack != null" >
+        pack = #{record.pack,jdbcType=VARCHAR},
+      </if>
+      <if test="record.addTime != null" >
+        add_time = #{record.addTime,jdbcType=INTEGER},
+      </if>
+      <if test="record.updateTime != null" >
+        update_time = #{record.updateTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ali_order
+    set id = #{record.id,jdbcType=INTEGER},
+      ali_wangwang = #{record.aliWangwang,jdbcType=VARCHAR},
+      goods_num = #{record.goodsNum,jdbcType=INTEGER},
+      ali_phone = #{record.aliPhone,jdbcType=VARCHAR},
+      ali_address = #{record.aliAddress,jdbcType=VARCHAR},
+      ali_remark = #{record.aliRemark,jdbcType=VARCHAR},
+      ali_product = #{record.aliProduct,jdbcType=VARCHAR},
+      ali_money = #{record.aliMoney,jdbcType=DECIMAL},
+      ali_imgs = #{record.aliImgs,jdbcType=VARCHAR},
+      design = #{record.design,jdbcType=VARCHAR},
+      pack = #{record.pack,jdbcType=VARCHAR},
+      add_time = #{record.addTime,jdbcType=INTEGER},
+      update_time = #{record.updateTime,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mbuy.entitys.AliOrder" >
+    update ali_order
+    <set >
+      <if test="aliWangwang != null" >
+        ali_wangwang = #{aliWangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsNum != null" >
+        goods_num = #{goodsNum,jdbcType=INTEGER},
+      </if>
+      <if test="aliPhone != null" >
+        ali_phone = #{aliPhone,jdbcType=VARCHAR},
+      </if>
+      <if test="aliAddress != null" >
+        ali_address = #{aliAddress,jdbcType=VARCHAR},
+      </if>
+      <if test="aliRemark != null" >
+        ali_remark = #{aliRemark,jdbcType=VARCHAR},
+      </if>
+      <if test="aliProduct != null" >
+        ali_product = #{aliProduct,jdbcType=VARCHAR},
+      </if>
+      <if test="aliMoney != null" >
+        ali_money = #{aliMoney,jdbcType=DECIMAL},
+      </if>
+      <if test="aliImgs != null" >
+        ali_imgs = #{aliImgs,jdbcType=VARCHAR},
+      </if>
+      <if test="design != null" >
+        design = #{design,jdbcType=VARCHAR},
+      </if>
+      <if test="pack != null" >
+        pack = #{pack,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null" >
+        add_time = #{addTime,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null" >
+        update_time = #{updateTime,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mbuy.entitys.AliOrder" >
+    update ali_order
+    set ali_wangwang = #{aliWangwang,jdbcType=VARCHAR},
+      goods_num = #{goodsNum,jdbcType=INTEGER},
+      ali_phone = #{aliPhone,jdbcType=VARCHAR},
+      ali_address = #{aliAddress,jdbcType=VARCHAR},
+      ali_remark = #{aliRemark,jdbcType=VARCHAR},
+      ali_product = #{aliProduct,jdbcType=VARCHAR},
+      ali_money = #{aliMoney,jdbcType=DECIMAL},
+      ali_imgs = #{aliImgs,jdbcType=VARCHAR},
+      design = #{design,jdbcType=VARCHAR},
+      pack = #{pack,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>
