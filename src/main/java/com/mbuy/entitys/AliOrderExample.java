@@ -1,5 +1,6 @@
 package com.mbuy.entitys;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -251,6 +252,76 @@ public class AliOrderExample {
 
         public Criteria andAliWangwangNotBetween(String value1, String value2) {
             addCriterion("ali_wangwang not between", value1, value2, "aliWangwang");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameIsNull() {
+            addCriterion("receive_name is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameIsNotNull() {
+            addCriterion("receive_name is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameEqualTo(String value) {
+            addCriterion("receive_name =", value, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameNotEqualTo(String value) {
+            addCriterion("receive_name <>", value, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameGreaterThan(String value) {
+            addCriterion("receive_name >", value, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameGreaterThanOrEqualTo(String value) {
+            addCriterion("receive_name >=", value, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameLessThan(String value) {
+            addCriterion("receive_name <", value, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameLessThanOrEqualTo(String value) {
+            addCriterion("receive_name <=", value, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameLike(String value) {
+            addCriterion("receive_name like", value, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameNotLike(String value) {
+            addCriterion("receive_name not like", value, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameIn(List<String> values) {
+            addCriterion("receive_name in", values, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameNotIn(List<String> values) {
+            addCriterion("receive_name not in", values, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameBetween(String value1, String value2) {
+            addCriterion("receive_name between", value1, value2, "receiveName");
+            return (Criteria) this;
+        }
+
+        public Criteria andReceiveNameNotBetween(String value1, String value2) {
+            addCriterion("receive_name not between", value1, value2, "receiveName");
             return (Criteria) this;
         }
 
@@ -604,52 +675,52 @@ public class AliOrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyEqualTo(Long value) {
+        public Criteria andAliMoneyEqualTo(BigDecimal value) {
             addCriterion("ali_money =", value, "aliMoney");
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyNotEqualTo(Long value) {
+        public Criteria andAliMoneyNotEqualTo(BigDecimal value) {
             addCriterion("ali_money <>", value, "aliMoney");
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyGreaterThan(Long value) {
+        public Criteria andAliMoneyGreaterThan(BigDecimal value) {
             addCriterion("ali_money >", value, "aliMoney");
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyGreaterThanOrEqualTo(Long value) {
+        public Criteria andAliMoneyGreaterThanOrEqualTo(BigDecimal value) {
             addCriterion("ali_money >=", value, "aliMoney");
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyLessThan(Long value) {
+        public Criteria andAliMoneyLessThan(BigDecimal value) {
             addCriterion("ali_money <", value, "aliMoney");
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyLessThanOrEqualTo(Long value) {
+        public Criteria andAliMoneyLessThanOrEqualTo(BigDecimal value) {
             addCriterion("ali_money <=", value, "aliMoney");
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyIn(List<Long> values) {
+        public Criteria andAliMoneyIn(List<BigDecimal> values) {
             addCriterion("ali_money in", values, "aliMoney");
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyNotIn(List<Long> values) {
+        public Criteria andAliMoneyNotIn(List<BigDecimal> values) {
             addCriterion("ali_money not in", values, "aliMoney");
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyBetween(Long value1, Long value2) {
+        public Criteria andAliMoneyBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("ali_money between", value1, value2, "aliMoney");
             return (Criteria) this;
         }
 
-        public Criteria andAliMoneyNotBetween(Long value1, Long value2) {
+        public Criteria andAliMoneyNotBetween(BigDecimal value1, BigDecimal value2) {
             addCriterion("ali_money not between", value1, value2, "aliMoney");
             return (Criteria) this;
         }
@@ -861,6 +932,76 @@ public class AliOrderExample {
 
         public Criteria andPackNotBetween(String value1, String value2) {
             addCriterion("pack not between", value1, value2, "pack");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateIsNull() {
+            addCriterion("exec_state is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateIsNotNull() {
+            addCriterion("exec_state is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateEqualTo(String value) {
+            addCriterion("exec_state =", value, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateNotEqualTo(String value) {
+            addCriterion("exec_state <>", value, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateGreaterThan(String value) {
+            addCriterion("exec_state >", value, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateGreaterThanOrEqualTo(String value) {
+            addCriterion("exec_state >=", value, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateLessThan(String value) {
+            addCriterion("exec_state <", value, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateLessThanOrEqualTo(String value) {
+            addCriterion("exec_state <=", value, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateLike(String value) {
+            addCriterion("exec_state like", value, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateNotLike(String value) {
+            addCriterion("exec_state not like", value, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateIn(List<String> values) {
+            addCriterion("exec_state in", values, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateNotIn(List<String> values) {
+            addCriterion("exec_state not in", values, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateBetween(String value1, String value2) {
+            addCriterion("exec_state between", value1, value2, "execState");
+            return (Criteria) this;
+        }
+
+        public Criteria andExecStateNotBetween(String value1, String value2) {
+            addCriterion("exec_state not between", value1, value2, "execState");
             return (Criteria) this;
         }
 

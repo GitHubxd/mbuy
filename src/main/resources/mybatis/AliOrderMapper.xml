@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.mbuy.entitys.AliOrder" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="ali_wangwang" property="aliWangwang" jdbcType="VARCHAR" />
+    <result column="receive_name" property="receiveName" jdbcType="VARCHAR" />
     <result column="goods_num" property="goodsNum" jdbcType="INTEGER" />
     <result column="ali_phone" property="aliPhone" jdbcType="VARCHAR" />
     <result column="ali_address" property="aliAddress" jdbcType="VARCHAR" />
@@ -13,6 +14,7 @@
     <result column="ali_imgs" property="aliImgs" jdbcType="VARCHAR" />
     <result column="design" property="design" jdbcType="VARCHAR" />
     <result column="pack" property="pack" jdbcType="VARCHAR" />
+    <result column="exec_state" property="execState" jdbcType="VARCHAR" />
     <result column="add_time" property="addTime" jdbcType="INTEGER" />
     <result column="update_time" property="updateTime" jdbcType="INTEGER" />
   </resultMap>
@@ -75,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, ali_wangwang, goods_num, ali_phone, ali_address, ali_remark, ali_product, ali_money, 
-    ali_imgs, design, pack, add_time, update_time
+    id, ali_wangwang, receive_name, goods_num, ali_phone, ali_address, ali_remark, ali_product, 
+    ali_money, ali_imgs, design, pack, exec_state, add_time, update_time
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mbuy.entitys.AliOrderExample" >
     select
@@ -112,16 +114,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.mbuy.entitys.AliOrder" >
-    insert into ali_order (id, ali_wangwang, goods_num, 
-      ali_phone, ali_address, ali_remark, 
-      ali_product, ali_money, ali_imgs, 
-      design, pack, add_time, 
-      update_time)
-    values (#{id,jdbcType=INTEGER}, #{aliWangwang,jdbcType=VARCHAR}, #{goodsNum,jdbcType=INTEGER}, 
-      #{aliPhone,jdbcType=VARCHAR}, #{aliAddress,jdbcType=VARCHAR}, #{aliRemark,jdbcType=VARCHAR}, 
-      #{aliProduct,jdbcType=VARCHAR}, #{aliMoney,jdbcType=DECIMAL}, #{aliImgs,jdbcType=VARCHAR}, 
-      #{design,jdbcType=VARCHAR}, #{pack,jdbcType=VARCHAR}, #{addTime,jdbcType=INTEGER}, 
-      #{updateTime,jdbcType=INTEGER})
+    insert into ali_order (id, ali_wangwang, receive_name, 
+      goods_num, ali_phone, ali_address, 
+      ali_remark, ali_product, ali_money, 
+      ali_imgs, design, pack, 
+      exec_state, add_time, update_time
+      )
+    values (#{id,jdbcType=INTEGER}, #{aliWangwang,jdbcType=VARCHAR}, #{receiveName,jdbcType=VARCHAR}, 
+      #{goodsNum,jdbcType=INTEGER}, #{aliPhone,jdbcType=VARCHAR}, #{aliAddress,jdbcType=VARCHAR}, 
+      #{aliRemark,jdbcType=VARCHAR}, #{aliProduct,jdbcType=VARCHAR}, #{aliMoney,jdbcType=DECIMAL}, 
+      #{aliImgs,jdbcType=VARCHAR}, #{design,jdbcType=VARCHAR}, #{pack,jdbcType=VARCHAR}, 
+      #{execState,jdbcType=VARCHAR}, #{addTime,jdbcType=INTEGER}, #{updateTime,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.mbuy.entitys.AliOrder" >
     insert into ali_order
@@ -131,6 +135,9 @@
       </if>
       <if test="aliWangwang != null" >
         ali_wangwang,
+      </if>
+      <if test="receiveName != null" >
+        receive_name,
       </if>
       <if test="goodsNum != null" >
         goods_num,
@@ -159,6 +166,9 @@
       <if test="pack != null" >
         pack,
       </if>
+      <if test="execState != null" >
+        exec_state,
+      </if>
       <if test="addTime != null" >
         add_time,
       </if>
@@ -172,6 +182,9 @@
       </if>
       <if test="aliWangwang != null" >
         #{aliWangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveName != null" >
+        #{receiveName,jdbcType=VARCHAR},
       </if>
       <if test="goodsNum != null" >
         #{goodsNum,jdbcType=INTEGER},
@@ -200,6 +213,9 @@
       <if test="pack != null" >
         #{pack,jdbcType=VARCHAR},
       </if>
+      <if test="execState != null" >
+        #{execState,jdbcType=VARCHAR},
+      </if>
       <if test="addTime != null" >
         #{addTime,jdbcType=INTEGER},
       </if>
@@ -222,6 +238,9 @@
       </if>
       <if test="record.aliWangwang != null" >
         ali_wangwang = #{record.aliWangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="record.receiveName != null" >
+        receive_name = #{record.receiveName,jdbcType=VARCHAR},
       </if>
       <if test="record.goodsNum != null" >
         goods_num = #{record.goodsNum,jdbcType=INTEGER},
@@ -250,6 +269,9 @@
       <if test="record.pack != null" >
         pack = #{record.pack,jdbcType=VARCHAR},
       </if>
+      <if test="record.execState != null" >
+        exec_state = #{record.execState,jdbcType=VARCHAR},
+      </if>
       <if test="record.addTime != null" >
         add_time = #{record.addTime,jdbcType=INTEGER},
       </if>
@@ -265,6 +287,7 @@
     update ali_order
     set id = #{record.id,jdbcType=INTEGER},
       ali_wangwang = #{record.aliWangwang,jdbcType=VARCHAR},
+      receive_name = #{record.receiveName,jdbcType=VARCHAR},
       goods_num = #{record.goodsNum,jdbcType=INTEGER},
       ali_phone = #{record.aliPhone,jdbcType=VARCHAR},
       ali_address = #{record.aliAddress,jdbcType=VARCHAR},
@@ -274,6 +297,7 @@
       ali_imgs = #{record.aliImgs,jdbcType=VARCHAR},
       design = #{record.design,jdbcType=VARCHAR},
       pack = #{record.pack,jdbcType=VARCHAR},
+      exec_state = #{record.execState,jdbcType=VARCHAR},
       add_time = #{record.addTime,jdbcType=INTEGER},
       update_time = #{record.updateTime,jdbcType=INTEGER}
     <if test="_parameter != null" >
@@ -285,6 +309,9 @@
     <set >
       <if test="aliWangwang != null" >
         ali_wangwang = #{aliWangwang,jdbcType=VARCHAR},
+      </if>
+      <if test="receiveName != null" >
+        receive_name = #{receiveName,jdbcType=VARCHAR},
       </if>
       <if test="goodsNum != null" >
         goods_num = #{goodsNum,jdbcType=INTEGER},
@@ -313,6 +340,9 @@
       <if test="pack != null" >
         pack = #{pack,jdbcType=VARCHAR},
       </if>
+      <if test="execState != null" >
+        exec_state = #{execState,jdbcType=VARCHAR},
+      </if>
       <if test="addTime != null" >
         add_time = #{addTime,jdbcType=INTEGER},
       </if>
@@ -325,6 +355,7 @@
   <update id="updateByPrimaryKey" parameterType="com.mbuy.entitys.AliOrder" >
     update ali_order
     set ali_wangwang = #{aliWangwang,jdbcType=VARCHAR},
+      receive_name = #{receiveName,jdbcType=VARCHAR},
       goods_num = #{goodsNum,jdbcType=INTEGER},
       ali_phone = #{aliPhone,jdbcType=VARCHAR},
       ali_address = #{aliAddress,jdbcType=VARCHAR},
@@ -334,6 +365,7 @@
       ali_imgs = #{aliImgs,jdbcType=VARCHAR},
       design = #{design,jdbcType=VARCHAR},
       pack = #{pack,jdbcType=VARCHAR},
+      exec_state = #{execState,jdbcType=VARCHAR},
       add_time = #{addTime,jdbcType=INTEGER},
       update_time = #{updateTime,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

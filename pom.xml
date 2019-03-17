@@ -59,7 +59,6 @@
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.9</version>
         </dependency>
-		
 	</dependencies>
 
 	<build>
@@ -67,6 +66,17 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+                <!-- 工程主入口-->
+	                <mainClass>com.mbuy.MbuyApplication</mainClass>
+	            </configuration>
+	            <executions>
+	                <execution>
+	                    <goals>
+	                        <goal>repackage</goal>
+	                    </goals>
+	                </execution>
+	            </executions>
 			</plugin>
 		</plugins>
 	</build>

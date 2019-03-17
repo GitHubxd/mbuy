@@ -1,11 +1,14 @@
 package com.mbuy.entitys;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 public class AliOrder implements Serializable {
     private Integer id;
 
     private String aliWangwang;
+
+    private String receiveName;
 
     private Integer goodsNum;
 
@@ -17,13 +20,15 @@ public class AliOrder implements Serializable {
 
     private String aliProduct;
 
-    private Long aliMoney;
+    private BigDecimal aliMoney;
 
     private String aliImgs;
 
     private String design;
 
     private String pack;
+
+    private String execState;
 
     private Integer addTime;
 
@@ -45,6 +50,14 @@ public class AliOrder implements Serializable {
 
     public void setAliWangwang(String aliWangwang) {
         this.aliWangwang = aliWangwang == null ? null : aliWangwang.trim();
+    }
+
+    public String getReceiveName() {
+        return receiveName;
+    }
+
+    public void setReceiveName(String receiveName) {
+        this.receiveName = receiveName == null ? null : receiveName.trim();
     }
 
     public Integer getGoodsNum() {
@@ -87,11 +100,11 @@ public class AliOrder implements Serializable {
         this.aliProduct = aliProduct == null ? null : aliProduct.trim();
     }
 
-    public Long getAliMoney() {
+    public BigDecimal getAliMoney() {
         return aliMoney;
     }
 
-    public void setAliMoney(Long aliMoney) {
+    public void setAliMoney(BigDecimal aliMoney) {
         this.aliMoney = aliMoney;
     }
 
@@ -119,6 +132,14 @@ public class AliOrder implements Serializable {
         this.pack = pack == null ? null : pack.trim();
     }
 
+    public String getExecState() {
+        return execState;
+    }
+
+    public void setExecState(String execState) {
+        this.execState = execState == null ? null : execState.trim();
+    }
+
     public Integer getAddTime() {
         return addTime;
     }
@@ -143,6 +164,7 @@ public class AliOrder implements Serializable {
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
         sb.append(", aliWangwang=").append(aliWangwang);
+        sb.append(", receiveName=").append(receiveName);
         sb.append(", goodsNum=").append(goodsNum);
         sb.append(", aliPhone=").append(aliPhone);
         sb.append(", aliAddress=").append(aliAddress);
@@ -152,6 +174,7 @@ public class AliOrder implements Serializable {
         sb.append(", aliImgs=").append(aliImgs);
         sb.append(", design=").append(design);
         sb.append(", pack=").append(pack);
+        sb.append(", execState=").append(execState);
         sb.append(", addTime=").append(addTime);
         sb.append(", updateTime=").append(updateTime);
         sb.append(", serialVersionUID=").append(serialVersionUID);
